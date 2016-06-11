@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream(new File("/home/wagner/Downloads/senai.001"));
+        FileInputStream fis = new FileInputStream(new File("/home/wagner/Downloads/arquivo.001"));
         byte[] bytes = new byte[fis.available()];
         fis.read(bytes);
         
@@ -32,7 +32,12 @@ public class Main {
             
             if (!bind.isEmpty()) {
                 Logger.getLogger(Main.class.getName()).log(Level.INFO, "Número de Faturas = " + bind.size());
-                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Dado da Primeira Fatura = " + bind.get(0).getFat001List().get(0).getNumero());
+                Fatura fatura1 = bind.get(0);
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Itens Fat001 = " + fatura1.getFat001List().size() + " / Itens Fat02B = " + fatura1.getFat02BList().size() + " / Itens Fat003 = " + fatura1.getFat003List().size() );
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Dados da Primeira Fatura = " + fatura1.getFat001List().get(0).getNumero() + " / " + fatura1.getFat02BList().get(0).getQuantidade() + " / " + fatura1.getFat003List().get(0).getApuracao() );
+                Fatura fatura25 = bind.get(25);
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Itens Fat001 = " + fatura25.getFat001List().size() + " / Itens Fat02B = " + fatura25.getFat02BList().size() + " / Itens Fat003 = " + fatura25.getFat003List().size() );
+                Logger.getLogger(Main.class.getName()).log(Level.INFO, "Dados da Fatura 25 = " + fatura25.getFat001List().get(0).getNumero() + " / " + fatura25.getFat02BList().get(0).getQuantidade() + " / " + fatura25.getFat003List().get(0).getApuracao() );
             }
             
         } catch (TxtMapperException ex) {
